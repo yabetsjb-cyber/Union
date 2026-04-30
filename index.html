@@ -73,7 +73,7 @@
             font-family: 'Playfair Display', serif;
         }
 
-        .union-text {
+        .horizontal-logo span.primary {
             color: var(--primary-color);
             font-weight: 900;
             font-size: 2.8rem;
@@ -81,9 +81,9 @@
             letter-spacing: 2px;
         }
 
-        .menu-text {
+        .horizontal-logo span.accent {
             color: var(--accent-color);
-            font-weight: 700;
+            font-weight: 900;
             font-size: 2.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -322,8 +322,8 @@
                 gap: 8px;
             }
 
-            .union-text,
-            .menu-text {
+            .horizontal-logo span.primary,
+            .horizontal-logo span.accent {
                 font-size: 2.2rem;
             }
 
@@ -354,8 +354,14 @@
     <header class="hero">
         <div class="header-content">
             <h1 class="horizontal-logo">
-                <span class="union-text">Union</span>
-                <span class="menu-text">Menu</span>
+                <span class="word">
+                    <span class="primary">U</span><span class="accent">n</span><span class="primary">i</span><span
+                        class="accent">o</span><span class="primary">n</span>
+                </span>
+                <span class="word">
+                    <span class="accent">M</span><span class="primary">e</span><span class="accent">n</span><span
+                        class="primary">u</span>
+                </span>
             </h1>
         </div>
     </header>
