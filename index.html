@@ -89,6 +89,45 @@
             letter-spacing: 2px;
         }
 
+        /* Slider Section */
+        .slider-wrapper {
+            width: calc(100% - 2rem);
+            max-width: 800px;
+            margin: 1.5rem auto 1rem;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            position: relative;
+            background: var(--white);
+        }
+
+        .slider-track {
+            display: flex;
+            width: 100%;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 300px;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 480px) {
+            .slider-wrapper {
+                margin: 1rem auto 0.5rem;
+            }
+
+            .slide {
+                height: 200px;
+            }
+        }
+
         /* Sticky Navigation */
         .category-nav {
             position: sticky;
@@ -327,6 +366,29 @@
         </div>
     </header>
 
+    <div class="slider-wrapper">
+        <div class="slider-track" id="slider-track">
+            <div class="slide"><img
+                    src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop"
+                    alt="Slider Image 1"></div>
+            <div class="slide"><img
+                    src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop"
+                    alt="Slider Image 2"></div>
+            <div class="slide"><img
+                    src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=800&auto=format&fit=crop"
+                    alt="Slider Image 3"></div>
+            <div class="slide"><img
+                    src="https://images.unsplash.com/photo-1493770348161-369560ae357d?q=80&w=800&auto=format&fit=crop"
+                    alt="Slider Image 4"></div>
+            <div class="slide"><img
+                    src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=800&auto=format&fit=crop"
+                    alt="Slider Image 5"></div>
+            <div class="slide"><img
+                    src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop"
+                    alt="Slider Image 6"></div>
+        </div>
+    </div>
+
     <nav class="category-nav" id="category-nav">
         <ul class="nav-links">
             <li><button class="nav-btn active" data-category="starters">Starters</button></li>
@@ -474,6 +536,19 @@
                     }
                 });
             });
+
+            // Slider Logic
+            const sliderTrack = document.getElementById('slider-track');
+            const sliderSlides = document.querySelectorAll('.slide');
+            let currentSlideIndex = 0;
+            const totalSlides = sliderSlides.length;
+
+            if (totalSlides > 0) {
+                setInterval(() => {
+                    currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+                    sliderTrack.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+                }, 3500);
+            }
         });
     </script>
 </body>
