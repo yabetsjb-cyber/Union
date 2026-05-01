@@ -57,6 +57,19 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.04);
         }
 
+        .header-layout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .header-logo-image {
+            height: 110px;
+            width: auto;
+            object-fit: contain;
+        }
+
         .header-content {
             display: flex;
             flex-direction: column;
@@ -333,6 +346,14 @@
                 padding: 1rem 1rem;
             }
 
+            .header-layout {
+                gap: 1rem;
+            }
+
+            .header-logo-image {
+                height: 70px;
+            }
+
             .horizontal-logo {
                 gap: 8px;
             }
@@ -371,17 +392,20 @@
 
 <body>
     <header class="hero">
-        <div class="header-content">
-            <div class="logo-top">The</div>
-            <h1 class="horizontal-logo">
-                <span class="word">
-                    <span class="primary">Union</span>
-                </span>
-                <span class="word">
-                    <span class="primary">Menu</span>
-                </span>
-            </h1>
-            <div class="logo-bottom">Chart</div>
+        <div class="header-layout">
+            <img src="./logo.jpg" alt="Union Logo" class="header-logo-image">
+            <div class="header-content">
+                <div class="logo-top">The</div>
+                <h1 class="horizontal-logo">
+                    <span class="word">
+                        <span class="primary">Union</span>
+                    </span>
+                    <span class="word">
+                        <span class="primary">Menu</span>
+                    </span>
+                </h1>
+                <div class="logo-bottom">Chart</div>
+            </div>
         </div>
     </header>
 
