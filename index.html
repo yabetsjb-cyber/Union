@@ -105,7 +105,17 @@
             list-style: none;
             padding: 0 1rem;
             gap: 0.5rem;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .nav-links::-webkit-scrollbar {
+            display: none;
         }
 
         .nav-btn {
@@ -119,6 +129,7 @@
             cursor: pointer;
             transition: var(--transition);
             position: relative;
+            white-space: nowrap;
         }
 
         .nav-btn.active {
@@ -136,56 +147,6 @@
             background-color: var(--accent-color);
         }
 
-        /* Dropdown styles */
-        .dropdown-wrapper {
-            position: relative;
-        }
-
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background-color: var(--white);
-            min-width: 180px;
-            box-shadow: var(--shadow);
-            border-radius: 8px;
-            z-index: 200;
-            flex-direction: column;
-            overflow: hidden;
-            margin-top: 0.5rem;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .dropdown-menu.show {
-            display: flex;
-        }
-
-        .dropdown-item {
-            display: block;
-            width: 100%;
-            text-align: left;
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            background: none;
-            border: none;
-            font-family: inherit;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-color);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .dropdown-item:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-item:hover,
-        .dropdown-item.active {
-            color: var(--accent-color);
-            background-color: rgba(43, 83, 41, 0.03);
-        }
 
         /* Menu Content */
         .menu-container {
@@ -371,20 +332,15 @@
             <li><button class="nav-btn active" data-category="starters">Starters</button></li>
             <li><button class="nav-btn" data-category="main_course">Main Course</button></li>
             <li><button class="nav-btn" data-category="pasta">Pasta</button></li>
-            <li class="dropdown-wrapper">
-                <button class="nav-btn dropdown-toggle">More ▼</button>
-                <div class="dropdown-menu">
-                    <button class="dropdown-item" data-category="continental">Continental Specialities</button>
-                    <button class="dropdown-item" data-category="fasting">Fasting</button>
-                    <button class="dropdown-item" data-category="snacks">Snacks</button>
-                    <button class="dropdown-item" data-category="desserts">Desserts</button>
-                </div>
-            </li>
+            <li><button class="nav-btn" data-category="continental">Continental Specialities</button></li>
+            <li><button class="nav-btn" data-category="fasting">Fasting</button></li>
+            <li><button class="nav-btn" data-category="snacks">Snacks</button></li>
+            <li><button class="nav-btn" data-category="desserts">Desserts</button></li>
         </ul>
     </nav>
 
     <main class="menu-container">
-        <h2 id="category-title" class="category-title">Breakfast</h2>
+        <h2 id="category-title" class="category-title"></h2>
         <div id="menu-items" class="menu-items-grid">
             <!-- Menu items will be injected here -->
         </div>
@@ -503,33 +459,13 @@
             renderMenu('starters');
 
             const allCategoryButtons = document.querySelectorAll('[data-category]');
-            const dropdownToggle = document.querySelector('.dropdown-toggle');
-            const dropdownMenu = document.querySelector('.dropdown-menu');
-
-            if (dropdownToggle) {
-                dropdownToggle.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    dropdownMenu.classList.toggle('show');
-                });
-            }
-
-            document.addEventListener('click', () => {
-                if (dropdownMenu && dropdownMenu.classList.contains('show')) {
-                    dropdownMenu.classList.remove('show');
-                }
-            });
 
             allCategoryButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     allCategoryButtons.forEach(btn => btn.classList.remove('active'));
-                    if (dropdownToggle) dropdownToggle.classList.remove('active');
 
                     button.classList.add('active');
                     const category = button.getAttribute('data-category');
-
-                    if (button.classList.contains('dropdown-item') && dropdownToggle) {
-                        dropdownToggle.classList.add('active');
-                    }
 
                     renderMenu(category);
 
