@@ -505,7 +505,7 @@
             const categoryTitle = document.getElementById('category-title');
 
             function renderMenu(category) {
-                categoryTitle.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                categoryTitle.textContent = category.split('_').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
                 menuItemsContainer.innerHTML = '';
                 const items = menuData[category];
 
