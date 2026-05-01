@@ -76,17 +76,30 @@
         .horizontal-logo span.primary {
             color: var(--primary-color);
             font-weight: 900;
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        .horizontal-logo span.accent {
-            color: var(--accent-color);
-            font-weight: 900;
-            font-size: 2.8rem;
+        .logo-top,
+        .logo-bottom {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+        }
+
+        .logo-top {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+            font-weight: 700;
+        }
+
+        .logo-bottom {
+            font-size: 1.1rem;
+            margin-top: 0.2rem;
+            letter-spacing: 4px;
+            font-weight: 700;
         }
 
         /* Slider Section */
@@ -324,9 +337,13 @@
                 gap: 8px;
             }
 
-            .horizontal-logo span.primary,
-            .horizontal-logo span.accent {
-                font-size: 2.2rem;
+            .horizontal-logo span.primary {
+                font-size: 1.8rem;
+            }
+
+            .logo-top,
+            .logo-bottom {
+                font-size: 0.9rem;
             }
 
             .category-nav {
@@ -355,6 +372,7 @@
 <body>
     <header class="hero">
         <div class="header-content">
+            <div class="logo-top">The</div>
             <h1 class="horizontal-logo">
                 <span class="word">
                     <span class="primary">Union</span>
@@ -363,6 +381,7 @@
                     <span class="primary">Menu</span>
                 </span>
             </h1>
+            <div class="logo-bottom">Chart</div>
         </div>
     </header>
 
