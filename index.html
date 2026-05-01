@@ -101,13 +101,15 @@
 
         .nav-links {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             list-style: none;
             padding: 0 1rem;
             gap: 0.5rem;
             flex-wrap: nowrap;
             overflow-x: auto;
-            scroll-behavior: smooth;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-x;
             -ms-overflow-style: none;
             /* IE and Edge */
             scrollbar-width: none;
